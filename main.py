@@ -86,11 +86,6 @@ def _snap_point(cur, lng: float, lat: float) -> tuple[int, float]:
 
 
 def _execute_pg_routing(cur, req: RouteRequest, cost_column: str, route_label: str):
-    """
-    pgr_withPoints 기반 경로 탐색.
-    반환된 엣지 geometry를 실제 이동 방향에 맞춰 뒤집거나 부분 절단해서
-    path가 지도상에서 꼬이지 않도록 조립한다.
-    """
     margin = 0.02
     min_lat = min(req.start_lat, req.end_lat) - margin
     max_lat = max(req.start_lat, req.end_lat) + margin
